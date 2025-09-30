@@ -21,7 +21,7 @@
 |-----|-----|-----|-----|
 | 김승훈 | 팀장, Front-End | [@Siya](https://github.com/SIya45) |  |
 | 엄인호 | Back-End | [@djsy01](https://github.com/djsy01) |  |
-| 정연수 |  |  |  |
+| 정연수 | Flutter |  |  |
 | 한정인 | DataBase |  |  |
 
 ---
