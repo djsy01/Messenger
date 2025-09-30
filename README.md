@@ -29,54 +29,50 @@
 ## 🎯 핵심 기능
 
 ### 1. 사용자 계정
-- 전화번호 기반 가입/로그인 (OTP 인증)  
-- 기기별 로그인 관리 (멀티 디바이스 지원)  
-- 연락처 기반 친구 자동 매칭(해시 비교)  
+- 전화번호 기반 가입/로그인 (SMS OTP 인증)  
+- 기기별 로그인 관리 (멀티 디바이스)  
+- 연락처 동기화(해시 기반)로 친구 자동 매칭  
 
 ### 2. 채팅
 - 1:1 / 그룹 채팅 (공지, 멘션, 읽음 수 표시)  
-- 메시지 전송 (텍스트, 사진, 동영상, 파일, 음성 메세지)  
-- **자동 번역** 기능 (메시지별/방별 설정 가능, 원문 ↔ 번역문 토글)  
+- 메시지 전송 (텍스트, 이모지, 이미지, 동영상, 파일)  
+- **자동 번역 지원** (메시지별/방별 설정 가능)  
 - 메시지 수정/삭제, 답장, 북마크  
 
 ### 3. 통화
-- 1:1 음성/영상 통화 (WebRTC)  
+- 1:1 음성/영상 통화 (WebRTC + Flutter 플러그인)  
 - 그룹 통화 (V2 예정)  
 - 화면 공유 (데스크톱/웹 지원)  
 
-### 4. 커스텀 짤/스티커
-- 개인 짤/스티커 업로드 (PNG, GIF, WebP)  
-- 내 보관함 관리 및 대화에서 바로 사용  
+### 4. 사용자 짤/스티커
+- 개인 짤/스티커 업로드 (PNG, GIF, WebP 지원)  
+- 보관함 관리 및 대화창에서 바로 사용  
 - 그룹 단위 공유 세트 (V1 예정)  
 
-### 5. 보안 & 프라이버시
-- 모든 통신 **TLS 암호화**  
+### 5. 보안
+- 전송 구간 TLS 암호화  
 - 기기별 세션 관리 및 원격 로그아웃  
-- (V2) 1:1 대화 **종단간 암호화(E2EE)** 지원 예정  
-- 번역 API 호출 시 개인정보 마스킹  
+- (V2) **E2EE(종단간 암호화)** 적용 예정  
 
 ---
 
 ## 🛠️ 기술 스택
 
-### 프론트엔드
-- **React Native (Expo)** → iOS / Android  
-- **React + TypeScript (PWA)** → Web  
-- **Electron + React** → Windows / macOS / Linux  
-- **공용 모듈**: Turborepo 모노레포, Recoil/Zustand, TanStack Query  
+### 클라이언트 (App/Web/Desktop)
+- **Flutter + Dart**  
+- UI 프레임워크: Material 3 (커스텀 테마)  
+- State 관리: Riverpod / Bloc / Provider (팀 선호에 따라 선택)  
+- 로컬 DB: SQLite (메시지 캐시)  
+- 번역 API 연동: Papago / Google Translate REST API  
 
 ### 백엔드
-- **Node.js (NestJS / Express)**  
+- **Node.js (NestJS 또는 Express)**  
 - **WebSocket(Socket.IO)** → 실시간 메시징  
-- **MySQL** → 사용자/메시지 메타데이터 저장  
-- **Redis** → 세션/프레즌스/캐시/실시간 이벤트  
-- **S3 호환 스토리지** → 이미지/동영상/스티커 저장  
+- **MySQL** → 사용자/메시지 메타데이터  
+- **Redis** → 세션, 캐시, 프레즌스 관리  
+- **S3 호환 스토리지** → 이미지/동영상/스티커  
 - **Meilisearch** → 메시지 검색  
 - **WebRTC + Coturn** → 음성/영상 통화  
-
-### 외부 API
-- **Naver Papago / Google Translate API** → 자동 번역  
-- **FCM / APNs / Web Push** → 푸시 알림  
 
 ---
 
